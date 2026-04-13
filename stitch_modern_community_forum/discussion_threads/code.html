@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ethos Collective | The Nexus</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#2b51d9",
+                        "on-secondary-container": "#2a48b2",
+                        "surface-container": "#ebeef0",
+                        "on-secondary-fixed": "#0d349f",
+                        "tertiary-fixed": "#efcffe",
+                        "on-surface": "#2d3335",
+                        "on-secondary-fixed-variant": "#3553bc",
+                        "on-secondary": "#faf8ff",
+                        "on-background": "#2d3335",
+                        "on-surface-variant": "#5a6062",
+                        "surface-variant": "#dee3e6",
+                        "primary-fixed": "#4c6ef5",
+                        "background": "#f8f9fa",
+                        "inverse-on-surface": "#9b9d9e",
+                        "surface-container-low": "#f1f4f5",
+                        "surface-tint": "#2b51d9",
+                        "secondary-fixed": "#dde1ff",
+                        "secondary-container": "#dde1ff",
+                        "tertiary-container": "#efcffe",
+                        "on-tertiary": "#fff6fd",
+                        "on-error": "#fff7f7",
+                        "surface-dim": "#d5dbdd",
+                        "inverse-primary": "#6c88ff",
+                        "tertiary": "#6f557d",
+                        "surface": "#f8f9fa",
+                        "tertiary-fixed-dim": "#e0c1ef",
+                        "on-error-container": "#6e0523",
+                        "outline": "#767c7e",
+                        "secondary-fixed-dim": "#cad2ff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-dim": "#2b4ab3",
+                        "tertiary-dim": "#624a70",
+                        "surface-container-highest": "#dee3e6",
+                        "primary-dim": "#1843cc",
+                        "error-container": "#f97386",
+                        "on-primary-container": "#000000",
+                        "inverse-surface": "#0c0f10",
+                        "on-tertiary-fixed": "#483156",
+                        "primary-container": "#4c6ef5",
+                        "on-primary": "#faf8ff",
+                        "surface-bright": "#f8f9fa",
+                        "secondary": "#3a56c0",
+                        "error": "#a8364b",
+                        "on-primary-fixed": "#ffffff",
+                        "surface-container-high": "#e5e9eb",
+                        "outline-variant": "#adb3b5",
+                        "on-tertiary-fixed-variant": "#664d74",
+                        "primary-fixed-dim": "#3d61e7",
+                        "on-tertiary-container": "#5c436a",
+                        "on-primary-fixed-variant": "#efefff",
+                        "error-dim": "#6b0221"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .brand-font { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-[0_8px_32px_-4px_rgba(45,51,53,0.06)]">
+<div class="flex items-center justify-between px-6 py-3 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-50">The Nexus</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-indigo-600 dark:text-indigo-400 font-bold border-b-2 border-indigo-600 font-plus-jakarta text-sm py-1" href="#">Feed</a>
+<a class="text-slate-500 dark:text-slate-400 font-plus-jakarta text-sm font-medium hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors px-3 py-1 rounded-full" href="#">Communities</a>
+<a class="text-slate-500 dark:text-slate-400 font-plus-jakarta text-sm font-medium hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors px-3 py-1 rounded-full" href="#">Explore</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full text-sm w-64 focus:ring-2 focus:ring-primary/20" placeholder="Search the sanctuary..." type="text"/>
+</div>
+<button class="p-2 rounded-full hover:bg-slate-100/50 text-on-surface-variant active:scale-95 duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-slate-200 overflow-hidden">
+<img alt="User avatar" data-alt="Close-up portrait of a professional man with a friendly expression in a brightly lit modern office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_bojTxSs4kqJuyDLWbH074SDyZ8lsFk0Bv_mK3Z8Pmx4CfeU0J2ehQNrdEwDbZGDBFd8dHgBPODMEjDauq4J4bPT3LpBf8OU-7mXQdYCSk177GFs0dBJvUIZWZq3kF6Tj6gUGe0FxpgQgE4V0O36IXoMpslSU8uvvvuR1AePk-rxwlrrjNchqmTaQS03prH2vDbqJgE0FwgRIyrKbyzfcO-nulrwD7FGvd55l53qH0EM2FqvTx8GFtUctC-jndRDbFMarHGI55ZhJ"/>
+</div>
+</div>
+</div>
+</nav>
+<!-- Sidebar Navigation -->
+<aside class="hidden lg:flex flex-col gap-2 p-4 h-screen w-64 fixed left-0 top-0 pt-20 bg-slate-50 dark:bg-slate-950">
+<div class="px-4 mb-6">
+<h2 class="text-lg font-black text-slate-900 dark:text-slate-50">The Sanctuary</h2>
+<p class="text-xs text-on-surface-variant">Curated intelligence</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 rounded-full shadow-sm font-semibold transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-plus-jakarta text-sm">Home</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 rounded-full hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-plus-jakarta text-sm">Trending</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 rounded-full hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">push_pin</span>
+<span class="font-plus-jakarta text-sm">Pinned</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 rounded-full hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-plus-jakarta text-sm">Categories</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 rounded-full hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="font-plus-jakarta text-sm">Saved</span>
+</a>
+</nav>
+<div class="mt-8 px-4">
+<button class="w-full py-3 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold rounded-full shadow-lg active:scale-95 duration-200 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+                Create Thread
+            </button>
+</div>
+<div class="mt-auto pb-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 rounded-full hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-plus-jakarta text-sm">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 rounded-full hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="font-plus-jakarta text-sm">Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-24 pb-12 px-6">
+<div class="max-w-4xl mx-auto">
+<!-- Header Section -->
+<header class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2">Ethos Collective</h1>
+<p class="text-on-surface-variant max-w-xl leading-relaxed">A gathering place for high-fidelity discussions on ethics, technology, and the future of human intelligence.</p>
+</div>
+<div class="flex gap-3">
+<span class="px-4 py-1.5 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">group</span>
+                        12.4k Members
+                    </span>
+</div>
+</header>
+<!-- Filters -->
+<div class="flex gap-4 mb-8 overflow-x-auto pb-2 no-scrollbar">
+<button class="px-5 py-2 bg-primary text-on-primary rounded-full text-sm font-semibold whitespace-nowrap">Recent Activity</button>
+<button class="px-5 py-2 bg-surface-container-high text-on-surface-variant rounded-full text-sm font-semibold whitespace-nowrap hover:bg-surface-variant transition-colors">Most Replying</button>
+<button class="px-5 py-2 bg-surface-container-high text-on-surface-variant rounded-full text-sm font-semibold whitespace-nowrap hover:bg-surface-variant transition-colors">Newcomers</button>
+<button class="px-5 py-2 bg-surface-container-high text-on-surface-variant rounded-full text-sm font-semibold whitespace-nowrap hover:bg-surface-variant transition-colors">Archived</button>
+</div>
+<!-- Thread List -->
+<div class="space-y-6">
+<!-- Thread Card 1 (Trending) -->
+<article class="bg-surface-container-lowest p-8 rounded-lg shadow-[0_8px_32px_-4px_rgba(45,51,53,0.06)] hover:shadow-[0_12px_48px_-8px_rgba(45,51,53,0.12)] transition-all group relative border border-transparent hover:border-primary/5">
+<div class="absolute top-8 right-8">
+<span class="px-3 py-1 bg-tertiary-container text-on-tertiary-container text-[10px] uppercase tracking-widest font-bold rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                            Trending
+                        </span>
+</div>
+<div class="flex gap-6">
+<div class="flex-shrink-0">
+<img alt="Author avatar" class="h-12 w-12 rounded-full object-cover" data-alt="Portrait of a young man with glasses and a thoughtful expression, warm studio lighting with a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBselLr7mvia2EniVMNrkclWMq1QUOvX7IviSt0FU9Hkjgv2l4xskDSLQQp5ZxvmSGoPB0E4ga5-TUKQ1zL6hCqcFhi7itbpulhRGdQRzFRsqMWCTr_Jul_2tldpVgscBpRODBkdojlU6rZfmuoFdTFxUV8fXkJsCek1_uSB2gnv92gO4TNxoNOY4cL9c0sYbIwbepw8m3CVExbWmDG561ygV4p1Su01hHJhspY0YJyMg7APllvtImjd2Nw2sMNzR1y-0fkXqAkQLVH"/>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-2 mb-2">
+<span class="font-bold text-sm text-on-surface">Aris Thorne</span>
+<span class="text-on-surface-variant text-xs">• 2 hours ago</span>
+</div>
+<h3 class="text-2xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors leading-tight">The implications of LLMs on the philosophy of consciousness</h3>
+<p class="text-on-surface-variant leading-relaxed mb-6 line-clamp-2">If language is a proxy for thought, does a perfect statistical model of language imply a model of thought? We explore the intersection of Turing tests and subjective experience...</p>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-lg">chat_bubble_outline</span>
+<span class="text-xs font-bold">142 Replies</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant hover:text-error transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-lg">favorite</span>
+<span class="text-xs font-bold">892</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors cursor-pointer ml-auto">
+<span class="material-symbols-outlined text-lg">share</span>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Thread Card 2 -->
+<article class="bg-surface-container-lowest p-8 rounded-lg shadow-[0_8px_32px_-4px_rgba(45,51,53,0.06)] hover:shadow-[0_12px_48px_-8px_rgba(45,51,53,0.12)] transition-all group relative border border-transparent hover:border-primary/5">
+<div class="flex gap-6">
+<div class="flex-shrink-0">
+<img alt="Author avatar" class="h-12 w-12 rounded-full object-cover" data-alt="Professional woman smiling warmly, soft natural lighting, garden greenery blurred in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9lGGgMVDpGN9JLnCVRjIIl1y4TeYj9EbW9TB0WUzcn5WoMUwmQ882x8Jej-dwrdpz3cG9E4-8kBfkKfiX8HcZ2xKoPjzxjsLKediZs0OLL9LXDQVyxrDsRAl-WfT8cFxk6rSkOMnThqaSH44AFGpYhwPGrFFZhuOqd3ITBczUzSUh_qyjEDl7bGbKmI45QCiAQjnBNzsrp17EG5unJ1sAVgRNFth52UjEw7q3u0HZpfjeobHdJzbuQqCohnw4bifRcQ7J7wKRHKpm"/>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-2 mb-2">
+<span class="font-bold text-sm text-on-surface">Dr. Elena Vance</span>
+<span class="text-on-surface-variant text-xs">• 5 hours ago</span>
+</div>
+<h3 class="text-2xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors leading-tight">Digital Minimalism: A survival guide for the hyper-connected era</h3>
+<p class="text-on-surface-variant leading-relaxed mb-6 line-clamp-2">How to reclaim your cognitive sovereignty from the attention economy. Discussion on Cal Newport's latest theories and practical community implementations.</p>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-lg">chat_bubble_outline</span>
+<span class="text-xs font-bold">56 Replies</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant hover:text-error transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-lg">favorite</span>
+<span class="text-xs font-bold">341</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors cursor-pointer ml-auto">
+<span class="material-symbols-outlined text-lg">share</span>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Thread Card 3 (Bento Grid Style Featured) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<article class="bg-primary p-8 rounded-lg shadow-lg group relative overflow-hidden flex flex-col justify-between">
+<div class="absolute top-0 right-0 p-8 opacity-10 scale-150">
+<span class="material-symbols-outlined text-9xl text-white">star</span>
+</div>
+<div class="relative z-10">
+<span class="px-3 py-1 bg-white/20 text-white text-[10px] uppercase tracking-widest font-bold rounded-full inline-block mb-4">Community Highlight</span>
+<h3 class="text-2xl font-bold text-white mb-4 group-hover:translate-x-1 transition-transform">Monthly Ethics Workshop: Neuralink &amp; The Future</h3>
+<p class="text-indigo-100 text-sm leading-relaxed mb-6">Join our moderated panel this Friday. RSVP required for access to the live discussion lounge.</p>
+</div>
+<div class="relative z-10 flex items-center justify-between">
+<div class="flex -space-x-3">
+<img alt="Avatar" class="h-8 w-8 rounded-full border-2 border-primary" data-alt="Headshot of a middle-aged man with a beard and kind eyes, neutral lighting, simple background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQMglXp9xVuua60UjYJILctJFSpn5MzxpoMJKCoCr0wMpUJPW3hYRdeV3D6hR7NLZA2oEjvEw8cY6idgepRI40SJBHg9IrdfvecXe_TbBHNLPPeaiHkwYRxaT-bB96wuytCTP598HgSRsDebNxwfjmTFfYtMdF2EuxZ1GQfII02roiYxg4w4TOHNHkBbyXX70Sp3qbUoKCzf5RGBtKcVX6apU1iGwPv7hvGLBa4LhQ-9WC5HaG5SdtXTBY4bYiuQijcz06Aqlh2y1P"/>
+<img alt="Avatar" class="h-8 w-8 rounded-full border-2 border-primary" data-alt="Portrait of a young woman with a calm expression, soft cinematic lighting, studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFua8h8Dw9e0DkRFwRPZFQjGWbCR2mzLg-4Hk08NVcHOY9sW8NabQg5l1yTCCA_01dtzlzOUkRj3j-AmSxok9PbKapoU8IG5PETzODwHM-8Vr4IkfihAGCxcl_rKRSw2PpPLkYDUX_KaJ9AU0aVtHy0Z3Wwe2TOoA-cZrmIgwjFRD8qFpyy3hKuC0fSpeimYLAQRyK26FgcWQfeBWEFIiyrzLBUdTn_mM3F4sap72n7WtP9TzXWXW-IxRlNEG3n7v9PSNuBLQMEPx7"/>
+<div class="h-8 w-8 rounded-full border-2 border-primary bg-primary-container text-primary text-[10px] font-bold flex items-center justify-center">+42</div>
+</div>
+<button class="text-white font-bold text-xs underline underline-offset-4">Register Now</button>
+</div>
+</article>
+<article class="bg-surface-container-high p-8 rounded-lg flex flex-col justify-between border border-transparent hover:border-primary/10 transition-all">
+<div>
+<span class="px-3 py-1 bg-on-surface-variant/10 text-on-surface-variant text-[10px] uppercase tracking-widest font-bold rounded-full inline-block mb-4">Quick Poll</span>
+<h3 class="text-xl font-bold text-on-surface mb-4">Is anonymity a requirement for true discourse?</h3>
+<div class="space-y-2 mb-6">
+<div class="w-full bg-surface-container-lowest rounded-full h-8 flex items-center px-4 text-xs font-bold text-on-surface-variant border border-outline-variant/10">Yes, it protects the vulnerable (45%)</div>
+<div class="w-full bg-surface-container-lowest rounded-full h-8 flex items-center px-4 text-xs font-bold text-on-surface-variant border border-outline-variant/10">No, it encourages toxicity (55%)</div>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant text-xs">
+<span>1,209 votes</span>
+<span class="font-bold text-primary">Vote Now</span>
+</div>
+</article>
+</div>
+<!-- Thread Card 4 -->
+<article class="bg-surface-container-lowest p-8 rounded-lg shadow-[0_8px_32px_-4px_rgba(45,51,53,0.06)] hover:shadow-[0_12px_48px_-8px_rgba(45,51,53,0.12)] transition-all group relative border border-transparent hover:border-primary/5">
+<div class="flex gap-6">
+<div class="flex-shrink-0">
+<img alt="Author avatar" class="h-12 w-12 rounded-full object-cover" data-alt="Portrait of a man in his late 20s with short hair, smiling confidently into the camera, daylight lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4nfpTKjYDYkDUhFBYnI1ggkBxWnVD_L6p0QHIuijmcJSKwOURfo5KNfgeLVtNr4t0S4YVBSIhvUUhZXijZNatVG_vVXe89h8ExaotB72Kq45VAxcPnARL5tL787KJNGDTbN5E9zxLOr6o8v3Ni0fo-snoYBXqcejVS1wX4zZ-mA4z1BuVjNtn1nuO6M6AB1O84OLHYm_NaWp2scGtyAMQzGeNjXtKUQv2ol4Ttk6JY1nCTkZZW6k80UaqkpH5YrYRMxmg-_phQvVe"/>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-2 mb-2">
+<span class="font-bold text-sm text-on-surface">Julian S.</span>
+<span class="text-on-surface-variant text-xs">• 12 hours ago</span>
+</div>
+<h3 class="text-2xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors leading-tight">The Aesthetic of Order: How UI impacts our decision-making</h3>
+<p class="text-on-surface-variant leading-relaxed mb-6 line-clamp-2">Exploring the psychological weight of whitespace and typography. Are we being subtly manipulated by the "clean" aesthetic? A deep dive into modern design ethics...</p>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-lg">chat_bubble_outline</span>
+<span class="text-xs font-bold">28 Replies</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant hover:text-error transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-lg">favorite</span>
+<span class="text-xs font-bold">119</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors cursor-pointer ml-auto">
+<span class="material-symbols-outlined text-lg">share</span>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<footer class="mt-16 flex items-center justify-center gap-2">
+<button class="h-10 w-10 flex items-center justify-center rounded-full bg-surface-container-high text-on-surface-variant hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="h-10 px-4 flex items-center justify-center rounded-full bg-primary text-on-primary font-bold text-sm">1</button>
+<button class="h-10 px-4 flex items-center justify-center rounded-full bg-surface-container-high text-on-surface-variant font-bold text-sm hover:bg-surface-variant transition-colors">2</button>
+<button class="h-10 px-4 flex items-center justify-center rounded-full bg-surface-container-high text-on-surface-variant font-bold text-sm hover:bg-surface-variant transition-colors">3</button>
+<span class="text-on-surface-variant px-2">...</span>
+<button class="h-10 px-4 flex items-center justify-center rounded-full bg-surface-container-high text-on-surface-variant font-bold text-sm hover:bg-surface-variant transition-colors">12</button>
+<button class="h-10 w-10 flex items-center justify-center rounded-full bg-surface-container-high text-on-surface-variant hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</footer>
+</div>
+</main>
+<!-- Right Sidebar / Info Panel (Desktop Only) -->
+<aside class="hidden xl:block fixed right-0 top-0 pt-24 pr-6 w-80 h-screen">
+<div class="space-y-6">
+<!-- Stats Card -->
+<div class="bg-surface-container-low p-6 rounded-lg">
+<h4 class="font-bold text-on-surface mb-4">Collective Pulse</h4>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-sm text-on-surface-variant">Active Now</span>
+<span class="text-sm font-bold text-primary">1,402</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm text-on-surface-variant">Threads Today</span>
+<span class="text-sm font-bold text-primary">48</span>
+</div>
+<div class="h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-2/3"></div>
+</div>
+</div>
+</div>
+<!-- Tags Cloud -->
+<div class="bg-surface-container-low p-6 rounded-lg">
+<h4 class="font-bold text-on-surface mb-4">Trending Topics</h4>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full">#Philosophy</span>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full">#Ethics</span>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full">#NeuroTech</span>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full">#AI</span>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full">#DigitalZen</span>
+</div>
+</div>
+<!-- CTA Card -->
+<div class="bg-gradient-to-br from-slate-900 to-slate-800 p-6 rounded-lg text-white">
+<h4 class="font-bold mb-2">Upgrade to Pro</h4>
+<p class="text-xs text-slate-300 leading-relaxed mb-4">Unlock advanced analytics, private lounges, and verified status badges.</p>
+<button class="w-full py-2 bg-white text-slate-900 text-xs font-black rounded-full active:scale-95 transition-transform">Learn More</button>
+</div>
+</div>
+</aside>
+<!-- Mobile Navigation Shell -->
+<div class="md:hidden fixed bottom-0 left-0 w-full bg-white/80 backdrop-blur-xl border-t border-slate-100 px-6 py-3 flex justify-between items-center z-50">
+<button class="flex flex-col items-center gap-1 text-indigo-600 font-bold">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[10px]">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-[10px]">Explore</span>
+</button>
+<button class="h-12 w-12 bg-primary text-white rounded-full flex items-center justify-center -mt-8 shadow-xl">
+<span class="material-symbols-outlined">add</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">chat</span>
+<span class="text-[10px]">Chats</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px]">Profile</span>
+</button>
+</div>
+</body></html>

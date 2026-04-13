@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Categories | Ethos Collective</title>
+<!-- Google Fonts: Plus Jakarta Sans & Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#2b51d9",
+                    "on-secondary-container": "#2a48b2",
+                    "surface-container": "#ebeef0",
+                    "on-secondary-fixed": "#0d349f",
+                    "tertiary-fixed": "#efcffe",
+                    "on-surface": "#2d3335",
+                    "on-secondary-fixed-variant": "#3553bc",
+                    "on-secondary": "#faf8ff",
+                    "on-background": "#2d3335",
+                    "on-surface-variant": "#5a6062",
+                    "surface-variant": "#dee3e6",
+                    "primary-fixed": "#4c6ef5",
+                    "background": "#f8f9fa",
+                    "inverse-on-surface": "#9b9d9e",
+                    "surface-container-low": "#f1f4f5",
+                    "surface-tint": "#2b51d9",
+                    "secondary-fixed": "#dde1ff",
+                    "secondary-container": "#dde1ff",
+                    "tertiary-container": "#efcffe",
+                    "on-tertiary": "#fff6fd",
+                    "on-error": "#fff7f7",
+                    "surface-dim": "#d5dbdd",
+                    "inverse-primary": "#6c88ff",
+                    "tertiary": "#6f557d",
+                    "surface": "#f8f9fa",
+                    "tertiary-fixed-dim": "#e0c1ef",
+                    "on-error-container": "#6e0523",
+                    "outline": "#767c7e",
+                    "secondary-fixed-dim": "#cad2ff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-dim": "#2b4ab3",
+                    "tertiary-dim": "#624a70",
+                    "surface-container-highest": "#dee3e6",
+                    "primary-dim": "#1843cc",
+                    "error-container": "#f97386",
+                    "on-primary-container": "#000000",
+                    "inverse-surface": "#0c0f10",
+                    "on-tertiary-fixed": "#483156",
+                    "primary-container": "#4c6ef5",
+                    "on-primary": "#faf8ff",
+                    "surface-bright": "#f8f9fa",
+                    "secondary": "#3a56c0",
+                    "error": "#a8364b",
+                    "on-primary-fixed": "#ffffff",
+                    "surface-container-high": "#e5e9eb",
+                    "outline-variant": "#adb3b5",
+                    "on-tertiary-fixed-variant": "#664d74",
+                    "primary-fixed-dim": "#3d61e7",
+                    "on-tertiary-container": "#5c436a",
+                    "on-primary-fixed-variant": "#efefff",
+                    "error-dim": "#6b0221"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-shift-surface-container-low {
+            background-color: #f1f4f5;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-[0_8px_32px_-4px_rgba(45,51,53,0.06)]">
+<div class="flex items-center justify-between px-6 py-3 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-50 font-headline">The Nexus</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-slate-500 dark:text-slate-400 font-plus-jakarta text-sm font-medium hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors px-3 py-1 rounded-full" href="#">Feed</a>
+<a class="text-slate-500 dark:text-slate-400 font-plus-jakarta text-sm font-medium hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors px-3 py-1 rounded-full" href="#">Communities</a>
+<a class="text-slate-500 dark:text-slate-400 font-plus-jakarta text-sm font-medium hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors px-3 py-1 rounded-full" href="#">Explore</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full text-sm focus:ring-2 focus:ring-primary w-64" placeholder="Search the collective..." type="text"/>
+</div>
+<button class="p-2 rounded-full hover:bg-slate-100/50 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden ring-2 ring-surface-variant">
+<img alt="User avatar" data-alt="close-up portrait of a young professional woman with a minimalist aesthetic and neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAND__bBrsn9LbOwsOI-KrZSnkSYvhrufFESJFt9ozVzpFY7n98VXzYaHKnjf8N-9EFH8ghJ6NVoWQQqYYcXZgYBMK3lCrPTwZ7j1jJBX3N9LLjWsWmftaGzppVCTDBsSe2Zm_DCNxmH3tsuv8yCnCk-OWQpw-Wx2xR6PqAqSBa_Nl31Wd708xwgpwpQsQoPHQ3GC3b_lbj1MZMzXf-Pz_A3v6MWzB6js5PQjvRFVBC56UHdfuvqecHU8YCZZaw5X40-rgMSfFWIMRB"/>
+</div>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Desktop) -->
+<aside class="hidden lg:flex flex-col gap-2 p-4 h-screen w-64 fixed left-0 top-0 pt-20 bg-slate-50 dark:bg-slate-950">
+<div class="mb-6 px-4">
+<h2 class="text-lg font-black text-slate-900 dark:text-slate-50 font-headline">The Sanctuary</h2>
+<p class="text-xs text-on-surface-variant font-medium uppercase tracking-wider">Curated intelligence</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 font-plus-jakarta text-sm hover:translate-x-1 transition-transform active:scale-98" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span> Home
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 font-plus-jakarta text-sm hover:translate-x-1 transition-transform active:scale-98" href="#">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span> Trending
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 font-plus-jakarta text-sm hover:translate-x-1 transition-transform active:scale-98" href="#">
+<span class="material-symbols-outlined" data-icon="push_pin">push_pin</span> Pinned
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 rounded-full shadow-sm font-semibold font-plus-jakarta text-sm transition-transform active:scale-98" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span> Categories
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 font-plus-jakarta text-sm hover:translate-x-1 transition-transform active:scale-98" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span> Saved
+            </a>
+</nav>
+<div class="mt-auto space-y-1 pt-4 border-t border-surface-variant/20">
+<button class="w-full bg-primary text-white py-3 px-4 rounded-full font-headline font-bold text-sm shadow-lg shadow-primary/20 hover:opacity-90 active:scale-95 transition-all mb-4">
+                Create Thread
+            </button>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 text-sm hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="settings">settings</span> Settings
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 text-sm hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="help_outline">help_outline</span> Support
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-24 px-6 pb-20 max-w-7xl mx-auto">
+<!-- Header Section -->
+<header class="mb-12">
+<div class="flex flex-col gap-2">
+<span class="text-primary font-headline font-bold text-sm tracking-widest uppercase">Explore Ecosystem</span>
+<h1 class="text-5xl font-extrabold tracking-tight font-headline text-on-surface">Categories</h1>
+<p class="text-on-surface-variant text-lg max-w-2xl leading-relaxed mt-2">
+                    Discover specialized knowledge hubs curated by our global network of contributors. Deep dive into the intersections of modern life.
+                </p>
+</div>
+</header>
+<!-- Category Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Category: Technology -->
+<div class="group bg-surface-container-lowest p-8 rounded-lg transition-all duration-300 hover:shadow-[0_8px_32px_-4px_rgba(45,51,53,0.06)] hover:bg-surface-bright border border-transparent hover:border-outline-variant/15 flex flex-col justify-between">
+<div>
+<div class="w-14 h-14 rounded-2xl bg-secondary-container flex items-center justify-center text-on-secondary-container mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="bolt">bolt</span>
+</div>
+<h3 class="text-2xl font-bold font-headline mb-3">Technology</h3>
+<p class="text-on-surface-variant leading-relaxed text-sm mb-6">
+                        From neural interfaces to sustainable hardware. Discussing the tools defining the next decade of human evolution.
+                    </p>
+</div>
+<div class="flex items-center justify-between">
+<span class="px-4 py-1.5 bg-surface-container-low rounded-full text-xs font-semibold text-on-surface-variant">2.4k Posts</span>
+<button class="flex items-center gap-2 text-primary font-bold text-sm group-hover:translate-x-1 transition-transform">
+                        Explore <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Category: Design -->
+<div class="group bg-surface-container-lowest p-8 rounded-lg transition-all duration-300 hover:shadow-[0_8px_32px_-4px_rgba(45,51,53,0.06)] hover:bg-surface-bright border border-transparent hover:border-outline-variant/15 flex flex-col justify-between">
+<div>
+<div class="w-14 h-14 rounded-2xl bg-tertiary-container flex items-center justify-center text-on-tertiary-container mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<h3 class="text-2xl font-bold font-headline mb-3">Design</h3>
+<p class="text-on-surface-variant leading-relaxed text-sm mb-6">
+                        Exploring visual systems, spatial computing UI, and the architecture of both physical and digital environments.
+                    </p>
+</div>
+<div class="flex items-center justify-between">
+<span class="px-4 py-1.5 bg-surface-container-low rounded-full text-xs font-semibold text-on-surface-variant">1.8k Posts</span>
+<button class="flex items-center gap-2 text-primary font-bold text-sm group-hover:translate-x-1 transition-transform">
+                        Explore <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Category: Wellness -->
+<div class="group bg-surface-container-lowest p-8 rounded-lg transition-all duration-300 hover:shadow-[0_8px_32px_-4px_rgba(45,51,53,0.06)] hover:bg-surface-bright border border-transparent hover:border-outline-variant/15 flex flex-col justify-between">
+<div>
+<div class="w-14 h-14 rounded-2xl bg-primary-container flex items-center justify-center text-on-primary-container mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl text-white" data-icon="self_improvement">self_improvement</span>
+</div>
+<h3 class="text-2xl font-bold font-headline mb-3">Wellness</h3>
+<p class="text-on-surface-variant leading-relaxed text-sm mb-6">
+                        Optimizing the biological substrate. Biohacking, mental resilience, and holistic performance science.
+                    </p>
+</div>
+<div class="flex items-center justify-between">
+<span class="px-4 py-1.5 bg-surface-container-low rounded-full text-xs font-semibold text-on-surface-variant">940 Posts</span>
+<button class="flex items-center gap-2 text-primary font-bold text-sm group-hover:translate-x-1 transition-transform">
+                        Explore <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Featured Large Card (Asymmetric) -->
+<div class="md:col-span-2 relative overflow-hidden bg-surface-container-lowest p-8 rounded-lg transition-all duration-300 hover:shadow-[0_8px_32px_-4px_rgba(45,51,53,0.06)] border border-transparent hover:border-outline-variant/15 flex flex-col md:flex-row gap-8">
+<div class="flex-1 z-10">
+<div class="w-14 h-14 rounded-2xl bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed mb-6">
+<span class="material-symbols-outlined text-3xl" data-icon="language">language</span>
+</div>
+<h3 class="text-3xl font-bold font-headline mb-4">Philosophy &amp; Culture</h3>
+<p class="text-on-surface-variant leading-relaxed text-md mb-8 max-w-lg">
+                        Our most active community hub. Engaging with ethical frameworks for a post-AI world and analyzing contemporary cultural shifts.
+                    </p>
+<div class="flex items-center gap-4">
+<div class="flex -space-x-3">
+<img alt="Avatar" class="w-10 h-10 rounded-full border-2 border-white" data-alt="close-up of a smiling man with clean glasses and a white button-down shirt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAV9Y2amM0NTbwbU0OMF42Xl4lKXBicGEX1h9U8MmhAe4apYBzq2UTkWuw7KVeZ84abIKuzYnrgPVMWMUp9ohwfNX59KHvdEMU-yiA3GhZE47FVCmrg2sm4dmvuWeaQPql5b5Ieemzdj7Cx4Avo_Sb-MA1tjVd9zQVk7rdVWqrvf7parJAHnXclKjY7vUdpNZ1a1nLM-45wVcrbxOXOBF5BQ2CMkMMzbcbvo1AOgL7sHmVcF5kL3JqcvbfgbOjDdMxXDWymYra7K8Sy"/>
+<img alt="Avatar" class="w-10 h-10 rounded-full border-2 border-white" data-alt="vibrant portrait of a woman with curly hair laughing in warm natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVrBgWXU7twdrDwQwuMBbidydJ1KeGYe1Sj2w2IaoqcmtxJmFqTDxx-SF8Oke2cehoPSmrbbGHA7ThDInKL42Z6laf6p_ysMtdEhchbEQGCQ6AQuq01ncGvwMJBaHFuDyCCqW5LcbGa-5nN2nXpdTKsDMpyuL60vrUKCkRPe2yHwfzEQ53Kkwnbnw9b-_yxSbNRU2EOsHEaLaO-Ltrg3XPKGXkNwu3_UbCoUbNObnFi11oAWjYY0vfpl6CM_iTVTh4mjGWqRfujmK1"/>
+<img alt="Avatar" class="w-10 h-10 rounded-full border-2 border-white" data-alt="professional portrait of a man in his 30s with short beard against a neutral studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_JgZwdJLnwHolMavlp-e4zZkuob8EJwKLIgfzUoAAqoqrumiwx9PAMGyNDNukL_7pdDjoey2Tm8mYaoTs09GgfN15NtL1WhGx17vBl25iN80P_6sfQHICTwmnIaUI1HH4L8O2R46exRBu90xDV1Ze94HBdjnbo1c-GRzfmosqRosCW56P6Vex2de2BX6jSEKTuZrVnWugZs-J6Pwhf9S5OQtzrcjDjhvAR-gAE6QplExVAe2kIV4nfk5cmrO4MorYF8oqUekKaRog"/>
+</div>
+<span class="text-xs font-bold text-on-surface-variant">+12.4k members</span>
+</div>
+</div>
+<div class="flex-1 h-48 md:h-auto rounded-xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+<img alt="Philosophy" class="w-full h-full object-cover" data-alt="abstract architectural marble sculpture with smooth curves and dramatic shadows in an art museum setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZudw1zKujaOUpTrp2H-wNsnGu1bNybJQufT_QNU-toqt_5aAAprR93OVIAQ4PU20EWNMJUmjbgQt9aYGrAILeOxqj4mEtZ-EEv7VtMHviK2Er8WuSedAy2x1E8GEfXXpfYZCsP0QKSZ4pxzdMjTI5CDejg5qQXPV5p4j45qWWLsXWij4Du7blmeIGFU-6KtT0d-vizYyFiWmmRW3dF06lz5xdlNmIsr_y7XDPRRsA4rk7XhRROVogxFNEYnQQ3NvjteZCf1e9KxYV"/>
+</div>
+</div>
+<!-- Category: Lifestyle -->
+<div class="group bg-surface-container-lowest p-8 rounded-lg transition-all duration-300 hover:shadow-[0_8px_32px_-4px_rgba(45,51,53,0.06)] hover:bg-surface-bright border border-transparent hover:border-outline-variant/15 flex flex-col justify-between">
+<div>
+<div class="w-14 h-14 rounded-2xl bg-surface-container-high flex items-center justify-center text-on-surface mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="coffee">coffee</span>
+</div>
+<h3 class="text-2xl font-bold font-headline mb-3">Lifestyle</h3>
+<p class="text-on-surface-variant leading-relaxed text-sm mb-6">
+                        Curating a life of intention. Minimalist travel, artisanal craftsmanship, and the slow living movement.
+                    </p>
+</div>
+<div class="flex items-center justify-between">
+<span class="px-4 py-1.5 bg-surface-container-low rounded-full text-xs font-semibold text-on-surface-variant">1.1k Posts</span>
+<button class="flex items-center gap-2 text-primary font-bold text-sm group-hover:translate-x-1 transition-transform">
+                        Explore <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="mt-20 pt-20 border-t border-surface-variant/20 grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="text-center md:text-left">
+<p class="text-4xl font-black font-headline text-on-surface">42</p>
+<p class="text-on-surface-variant text-sm font-medium uppercase tracking-widest mt-1">Active Clusters</p>
+</div>
+<div class="text-center md:text-left">
+<p class="text-4xl font-black font-headline text-on-surface">1.2M</p>
+<p class="text-on-surface-variant text-sm font-medium uppercase tracking-widest mt-1">Monthly Discussions</p>
+</div>
+<div class="text-center md:text-left">
+<p class="text-4xl font-black font-headline text-on-surface">15k</p>
+<p class="text-on-surface-variant text-sm font-medium uppercase tracking-widest mt-1">Verified Curators</p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface-container-lowest/80 backdrop-blur-xl z-50 flex justify-around py-4 shadow-2xl">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="text-[10px] font-bold">Categories</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="text-[10px] font-bold">Create</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+<span class="text-[10px] font-bold">Inbox</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold">Profile</span>
+</button>
+</nav>
+</body></html>
