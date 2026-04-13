@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Forum</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ── Site Header ──────────────────────────────────────────── -->
+    <header class="site-header">
+        <h1>&#128172; Community Forum</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#new-thread-section">New Thread</a>
+        </nav>
+    </header>
+
+    <!-- ── Main Layout ──────────────────────────────────────────── -->
+    <main class="container">
+        <div class="page-layout">
+
+            <!-- Sidebar: category filter -->
+            <aside class="sidebar">
+                <h2>Categories</h2>
+                <ul class="category-list" id="category-list">
+                    <li><p class="text-muted text-sm">Loading…</p></li>
+                </ul>
+            </aside>
+
+            <!-- Main column: thread list + new thread form -->
+            <section>
+
+                <!-- Thread list header -->
+                <div class="thread-list-header">
+                    <h2 id="list-heading">All Threads</h2>
+                    <button class="btn btn-new" id="toggle-form-btn">+ New Thread</button>
+                </div>
+
+                <!-- Thread cards injected here by dom.js -->
+                <div id="thread-list">
+                    <p class="loading-msg">Loading threads…</p>
+                </div>
+
+                <!-- ── New Thread Form ─────────────────────────────── -->
+                <div class="form-card" id="new-thread-section" style="display:none">
+                    <h2>Start a New Thread</h2>
+
+                    <form id="thread-form" novalidate>
+
+                        <div class="field">
+                            <label for="thread-title">Title <span style="color:var(--clr-error)">*</span></label>
+                            <input type="text" id="thread-title" placeholder="Brief, descriptive title"
+                                   maxlength="255" autocomplete="off">
+                            <span class="error-msg" data-for="thread-title"></span>
+                        </div>
+
+                        <div class="field">
+                            <label for="thread-body">Body <span style="color:var(--clr-error)">*</span></label>
+                            <textarea id="thread-body" rows="6"
+                                      placeholder="Describe your topic in detail…"></textarea>
+                            <div style="display:flex;justify-content:space-between;align-items:center">
+                                <span class="error-msg" data-for="thread-body"></span>
+                                <span class="text-muted text-sm" id="body-counter"></span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="thread-category">Category <span style="color:var(--clr-error)">*</span></label>
+                            <select id="thread-category">
+                                <option value="">— Select a category —</option>
+                            </select>
+                            <span class="error-msg" data-for="thread-category"></span>
+                        </div>
+
+                        <div style="display:flex;gap:.75rem;margin-top:.5rem">
+                            <button type="submit" class="btn btn-primary" id="submit-btn">Post Thread</button>
+                            <button type="button" class="btn btn-secondary" id="cancel-btn">Cancel</button>
+                        </div>
+
+                    </form>
+                </div>
+                <!-- /new-thread-section -->
+
+            </section>
+        </div>
+    </main>
+
+    <!-- ── Scripts (order matters: validation → api → dom → page logic) ── -->
+    <script src="js/validation.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/dom.js"></script>
+
+    <script>
+    /**
+     * index.js — inline page controller for index.html
+     *
+     * Orchestrates API calls and DOM updates for the thread list page.
+     * Module coverage: Module 2 (DOM events), Module 3 (JSON fetch)
+     */
+    (function () {
+        'use strict';
+
+        const { CategoryAPI, ThreadAPI } = window.ForumAPI;
+        const V   = window.ForumValidation;
+        const DOM = window.ForumDOM;
+
+        let activeCategoryId = 0;  // 0 = all categories
+
+        // ── Initialise ────────────────────────────────────────────────────
+        async function init() {
+            try {
+                const catData = await CategoryAPI.list();
+                const categories = catData.categories || [];
+
+                DOM.renderCategoryList(categories, activeCategoryId, onCategorySelect);
+                DOM.populateCategorySelect('thread-category', categories);
+            } catch (err) {
+                DOM.showToast('Failed to load categories: ' + err.message, 'error');
+            }
+
+            await loadThreads(0);
+            setupForm();
+            setupToggle();
+        }
+
+        // ── Load Threads ──────────────────────────────────────────────────
+        async function loadThreads(categoryId) {
+            DOM.showLoading('thread-list', 'Fetching threads…');
+            try {
+                const data = await ThreadAPI.list(categoryId || null);
+                DOM.renderThreadList(data.threads || []);
+            } catch (err) {
+                DOM.showEmpty('thread-list', 'Could not load threads. Is the server running?');
+                console.error(err);
+            }
+        }
+
+        // ── Category Filter ───────────────────────────────────────────────
+        async function onCategorySelect(categoryId) {
+            activeCategoryId = categoryId;
+
+            // Update sidebar active state
+            document.querySelectorAll('.category-list a').forEach(a => {
+                a.classList.toggle('active', parseInt(a.dataset.id) === categoryId);
+            });
+
+            // Update heading
+            const heading = document.getElementById('list-heading');
+            const activeLink = document.querySelector(`.category-list a[data-id="${categoryId}"]`);
+            if (heading) {
+                heading.textContent = categoryId === 0
+                    ? 'All Threads'
+                    : (activeLink ? activeLink.textContent.trim() : 'Threads');
+            }
+
+            await loadThreads(categoryId);
+        }
+
+        // ── Toggle New Thread Form ────────────────────────────────────────
+        function setupToggle() {
+            const formSection = document.getElementById('new-thread-section');
+            const toggleBtn   = document.getElementById('toggle-form-btn');
+            const cancelBtn   = document.getElementById('cancel-btn');
+
+            toggleBtn.addEventListener('click', () => {
+                const visible = formSection.style.display !== 'none';
+                formSection.style.display = visible ? 'none' : 'block';
+                toggleBtn.textContent = visible ? '+ New Thread' : '✕ Close';
+                if (!visible) {
+                    formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+
+            cancelBtn.addEventListener('click', () => {
+                formSection.style.display = 'none';
+                toggleBtn.textContent = '+ New Thread';
+            });
+        }
+
+        // ── New Thread Form ───────────────────────────────────────────────
+        function setupForm() {
+            // Attach character counter to textarea
+            V.attachCharCounter('thread-body', 5000, 'body-counter');
+
+            // Wire up validation + submit handler
+            V.attachValidation(
+                'thread-form',
+                { title: 'thread-title', body: 'thread-body' },
+                handleThreadSubmit
+            );
+        }
+
+        async function handleThreadSubmit(data, form) {
+            const categoryId = parseInt(document.getElementById('thread-category').value);
+            if (!categoryId) {
+                const sel = document.getElementById('thread-category');
+                const errEl = sel.parentElement.querySelector('.error-msg');
+                if (errEl) errEl.textContent = 'Please select a category.';
+                return;
+            }
+
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Posting…';
+
+            try {
+                const created = await ThreadAPI.create({
+                    title:      data.title,
+                    body:       data.body,
+                    categoryId: categoryId,
+                    userId:     1  // hardcoded — no auth in this demo
+                });
+
+                // Update UI without page reload
+                DOM.prependThreadCard(created);
+                DOM.showToast('Thread posted!', 'success');
+
+                // Reset form and hide it
+                form.reset();
+                document.getElementById('new-thread-section').style.display = 'none';
+                document.getElementById('toggle-form-btn').textContent = '+ New Thread';
+
+            } catch (err) {
+                DOM.showToast('Error: ' + err.message, 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Post Thread';
+            }
+        }
+
+        // ── Boot ──────────────────────────────────────────────────────────
+        document.addEventListener('DOMContentLoaded', init);
+
+    })();
+    </script>
+
+</body>
+</html>

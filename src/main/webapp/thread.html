@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thread — Community Forum</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ── Site Header ──────────────────────────────────────────── -->
+    <header class="site-header">
+        <h1>&#128172; Community Forum</h1>
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
+
+    <!-- ── Main Content ─────────────────────────────────────────── -->
+    <main class="container" style="max-width:760px">
+
+        <!-- Back navigation -->
+        <a href="index.html" class="back-link">&#8592; Back to threads</a>
+
+        <!-- Thread title, body, metadata — injected by dom.js -->
+        <div id="thread-header">
+            <p class="loading-msg">Loading thread…</p>
+        </div>
+
+        <!-- ── Replies ──────────────────────────────────────────── -->
+        <section class="section-gap">
+            <h2 style="font-size:16px;font-weight:600;margin-bottom:1rem">
+                Replies <span id="reply-count" class="text-muted text-sm"></span>
+            </h2>
+
+            <!-- Reply cards injected here by dom.js -->
+            <div id="reply-list">
+                <p class="loading-msg">Loading replies…</p>
+            </div>
+        </section>
+
+        <!-- ── Reply Form ────────────────────────────────────────── -->
+        <div class="form-card section-gap" id="reply-section">
+            <h2>Leave a Reply</h2>
+
+            <form id="reply-form" novalidate>
+
+                <div class="field">
+                    <label for="reply-body">Your reply <span style="color:var(--clr-error)">*</span></label>
+                    <textarea id="reply-body" rows="5"
+                              placeholder="Share your thoughts…"></textarea>
+                    <div style="display:flex;justify-content:space-between;align-items:center">
+                        <span class="error-msg" data-for="reply-body"></span>
+                        <span class="text-muted text-sm" id="reply-counter"></span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="reply-submit-btn">
+                    Post Reply
+                </button>
+
+            </form>
+        </div>
+
+    </main>
+
+    <!-- ── Scripts ──────────────────────────────────────────────── -->
+    <script src="js/validation.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/dom.js"></script>
+
+    <script>
+    /**
+     * thread.js — inline page controller for thread.html
+     *
+     * Loads a single thread + its replies, and handles submitting a new reply.
+     * Module coverage: Module 2 (events, DOM), Module 3 (JSON)
+     */
+    (function () {
+        'use strict';
+
+        const { ThreadAPI, ReplyAPI } = window.ForumAPI;
+        const V   = window.ForumValidation;
+        const DOM = window.ForumDOM;
+
+        // Read thread id from URL: thread.html?id=5
+        const threadId = parseInt(DOM.getQueryParam('id'));
+
+        // ── Initialise ────────────────────────────────────────────────────
+        async function init() {
+            if (!threadId || isNaN(threadId)) {
+                document.getElementById('thread-header').innerHTML =
+                    '<p class="empty-msg">Invalid thread ID. <a href="index.html">Go home</a></p>';
+                return;
+            }
+
+            await loadThread();
+            setupReplyForm();
+        }
+
+        // ── Load Thread + Replies ─────────────────────────────────────────
+        async function loadThread() {
+            try {
+                const data = await ThreadAPI.get(threadId);
+
+                DOM.renderThreadDetail(data.thread);
+                DOM.renderReplies(data.posts || []);
+
+                // Update reply count label
+                const countEl = document.getElementById('reply-count');
+                if (countEl) {
+                    const n = (data.posts || []).length;
+                    countEl.textContent = `(${n})`;
+                }
+
+            } catch (err) {
+                document.getElementById('thread-header').innerHTML =
+                    `<p class="empty-msg">Could not load thread: ${err.message}</p>`;
+                DOM.showToast('Failed to load thread.', 'error');
+            }
+        }
+
+        // ── Reply Form ────────────────────────────────────────────────────
+        function setupReplyForm() {
+            V.attachCharCounter('reply-body', 2000, 'reply-counter');
+
+            // Map 'reply' rule key → textarea id
+            V.attachValidation(
+                'reply-form',
+                { reply: 'reply-body' },
+                handleReplySubmit
+            );
+        }
+
+        async function handleReplySubmit(data, form) {
+            const submitBtn = document.getElementById('reply-submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Posting…';
+
+            try {
+                const created = await ReplyAPI.create({
+                    threadId: threadId,
+                    userId:   1,          // hardcoded — no auth in this demo
+                    body:     data.reply
+                });
+
+                // Append reply without page reload
+                DOM.appendReplyCard(created);
+                DOM.showToast('Reply posted!', 'success');
+
+                // Update reply count
+                const countEl = document.getElementById('reply-count');
+                if (countEl) {
+                    const current = parseInt(countEl.textContent.replace(/\D/g, '')) || 0;
+                    countEl.textContent = `(${current + 1})`;
+                }
+
+                // Scroll new reply into view
+                const replyList = document.getElementById('reply-list');
+                if (replyList && replyList.lastElementChild) {
+                    replyList.lastElementChild.scrollIntoView({ behavior: 'smooth' });
+                }
+
+                form.reset();
+
+            } catch (err) {
+                DOM.showToast('Error posting reply: ' + err.message, 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Post Reply';
+            }
+        }
+
+        // ── Boot ──────────────────────────────────────────────────────────
+        document.addEventListener('DOMContentLoaded', init);
+
+    })();
+    </script>
+
+</body>
+</html>
