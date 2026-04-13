@@ -1,0 +1,411 @@
+/* ================================================================
+   Forum Application — style.css
+   Module coverage: Module 1 (CSS3, responsive layout)
+   ================================================================ */
+
+/* ── Reset & Base ──────────────────────────────────────────────── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --clr-bg:       #f4f3ee;
+    --clr-surface:  #ffffff;
+    --clr-border:   #e0dfd6;
+    --clr-primary:  #1a1a18;
+    --clr-accent:   #3a5fd9;
+    --clr-accent-h: #2b4cb8;
+    --clr-muted:    #6b6b65;
+    --clr-error:    #c93232;
+    --clr-success:  #2a7d4f;
+    --clr-badge-bg: #e8f0fe;
+    --clr-badge-tx: #2b4cb8;
+
+    --radius-sm:  6px;
+    --radius-md:  10px;
+    --radius-lg:  14px;
+    --shadow-sm:  0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+    --shadow-md:  0 4px 12px rgba(0,0,0,.08);
+    --font-body:  'Segoe UI', system-ui, -apple-system, sans-serif;
+    --font-mono:  'Cascadia Code', 'Fira Mono', monospace;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--clr-bg);
+    color: var(--clr-primary);
+    line-height: 1.65;
+    font-size: 15px;
+}
+
+a {
+    color: var(--clr-accent);
+    text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+/* ── Site Header ───────────────────────────────────────────────── */
+.site-header {
+    background: var(--clr-primary);
+    color: #fff;
+    padding: .85rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.site-header h1 {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -.3px;
+}
+
+.site-header nav a {
+    color: rgba(255,255,255,.75);
+    font-size: 14px;
+    margin-left: 1.25rem;
+    transition: color .15s;
+}
+.site-header nav a:hover { color: #fff; text-decoration: none; }
+
+/* ── Layout ────────────────────────────────────────────────────── */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+}
+
+.page-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+@media (max-width: 680px) {
+    .page-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Sidebar — Category List ────────────────────────────────────── */
+.sidebar {
+    background: var(--clr-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg);
+    padding: 1rem;
+    position: sticky;
+    top: 70px;
+}
+
+.sidebar h2 {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--clr-muted);
+    margin-bottom: .75rem;
+}
+
+.category-list {
+    list-style: none;
+}
+
+.category-list li a {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .45rem .6rem;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    color: var(--clr-primary);
+    transition: background .12s;
+}
+
+.category-list li a:hover {
+    background: var(--clr-bg);
+    text-decoration: none;
+}
+
+.category-list li a.active {
+    background: var(--clr-badge-bg);
+    color: var(--clr-accent);
+    font-weight: 500;
+}
+
+.cat-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--clr-accent);
+    flex-shrink: 0;
+}
+
+/* ── Thread List ────────────────────────────────────────────────── */
+.thread-list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.thread-list-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#thread-list {
+    display: grid;
+    gap: .6rem;
+}
+
+.thread-card {
+    background: var(--clr-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg);
+    padding: 1rem 1.25rem;
+    transition: box-shadow .15s, border-color .15s;
+    cursor: pointer;
+}
+
+.thread-card:hover {
+    box-shadow: var(--shadow-sm);
+    border-color: #c8c7be;
+}
+
+.thread-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: .3rem;
+    color: var(--clr-primary);
+}
+
+.thread-card h3 a { color: inherit; }
+.thread-card h3 a:hover { color: var(--clr-accent); text-decoration: none; }
+
+.thread-meta {
+    font-size: 12px;
+    color: var(--clr-muted);
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: inline-block;
+    background: var(--clr-badge-bg);
+    color: var(--clr-badge-tx);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 20px;
+}
+
+/* ── Reply List ─────────────────────────────────────────────────── */
+.reply-card {
+    background: var(--clr-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-md);
+    padding: .9rem 1.1rem;
+    margin-bottom: .6rem;
+}
+
+.reply-card .reply-author {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: .4rem;
+}
+
+.reply-card .reply-body {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.reply-card .reply-time {
+    font-size: 11px;
+    color: var(--clr-muted);
+    margin-top: .4rem;
+}
+
+/* ── Forms ──────────────────────────────────────────────────────── */
+.form-card {
+    background: var(--clr-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.form-card h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+    margin-bottom: 1rem;
+}
+
+label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--clr-primary);
+}
+
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+    width: 100%;
+    border: 1.5px solid var(--clr-border);
+    border-radius: var(--radius-sm);
+    padding: .55rem .8rem;
+    font-size: 14px;
+    font-family: inherit;
+    background: var(--clr-surface);
+    color: var(--clr-primary);
+    transition: border-color .15s, box-shadow .15s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--clr-accent);
+    box-shadow: 0 0 0 3px rgba(58,95,217,.12);
+}
+
+input.invalid,
+textarea.invalid {
+    border-color: var(--clr-error);
+    box-shadow: 0 0 0 3px rgba(201,50,50,.1);
+}
+
+.error-msg {
+    font-size: 12px;
+    color: var(--clr-error);
+    min-height: 1.1em;
+}
+
+textarea { resize: vertical; }
+
+/* ── Buttons ────────────────────────────────────────────────────── */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .55rem 1.2rem;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    transition: background .15s, transform .1s;
+}
+
+.btn:active { transform: scale(.98); }
+
+.btn-primary {
+    background: var(--clr-primary);
+    color: #fff;
+}
+.btn-primary:hover { background: #333; }
+
+.btn-secondary {
+    background: transparent;
+    color: var(--clr-primary);
+    border: 1.5px solid var(--clr-border);
+}
+.btn-secondary:hover { background: var(--clr-bg); }
+
+.btn-new {
+    background: var(--clr-accent);
+    color: #fff;
+    font-size: 13px;
+    padding: .45rem 1rem;
+}
+.btn-new:hover { background: var(--clr-accent-h); }
+
+/* ── Status / Toast ─────────────────────────────────────────────── */
+.toast {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    padding: .65rem 1.2rem;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: var(--shadow-md);
+    z-index: 999;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity .2s, transform .2s;
+    pointer-events: none;
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+.toast.success { background: var(--clr-success); color: #fff; }
+.toast.error   { background: var(--clr-error);   color: #fff; }
+
+/* ── Loading / Empty States ─────────────────────────────────────── */
+.loading-msg, .empty-msg {
+    text-align: center;
+    color: var(--clr-muted);
+    padding: 2.5rem 1rem;
+    font-size: 14px;
+}
+
+/* ── Thread Detail Page ─────────────────────────────────────────── */
+.thread-detail-header {
+    background: var(--clr-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.thread-detail-header h1 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: .5rem;
+}
+
+.thread-detail-body {
+    font-size: 15px;
+    line-height: 1.7;
+    margin: .8rem 0;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    font-size: 13px;
+    color: var(--clr-muted);
+    margin-bottom: 1rem;
+}
+.back-link:hover { color: var(--clr-primary); text-decoration: none; }
+
+/* ── Utility ────────────────────────────────────────────────────── */
+.text-muted  { color: var(--clr-muted); }
+.text-sm     { font-size: 13px; }
+.mt-1        { margin-top: .5rem; }
+.mb-1        { margin-bottom: .5rem; }
+.section-gap { margin-top: 2rem; }
+
+/* ── Print ──────────────────────────────────────────────────────── */
+@media print {
+    .site-header, .sidebar, .form-card, .btn { display: none; }
+    .container { max-width: 100%; }
+}
