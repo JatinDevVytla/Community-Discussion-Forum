@@ -1,4 +1,4 @@
-# Community Discussion Forum — Full Stack Capstone
+# Community Discussion Forum
 
 A lightweight discussion forum demonstrating HTML5, CSS3, JavaScript,
 Java Servlets/JSP, JDBC, and JSON across a full MVC stack.
